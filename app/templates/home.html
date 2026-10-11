@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>USERS</h1>
+{% for user in users %}
+
+<h3>User{{user.id}}</h3>
+ID: {{user.id}}
+NAME:<a href = "{{url_for('users',user_id =user.id)}}">{{user.name}} </a>
+E-mail: {{user.email}}
+
+
+{% endfor %}
+
+{% endblock content %}

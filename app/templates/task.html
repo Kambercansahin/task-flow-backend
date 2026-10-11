@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h3>TASKS {{task.title}}</h3>
+id:{{task.id}}
+<br><br>
+project_id: {{task.project_id}}
+<br><br>
+title:{{task.title}}
+<br><br>
+description: {{task.description}}
+<br><br>
+priority : {{task.priority}}
+<br><br>
+status: {{task.status}}
+<br>    ---------------------------------------
+</div>
+
+{% endblock content %}

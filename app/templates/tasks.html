@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+<h1>TASKS</h1>
+{% for task in tasks %}
+<div>
+    <h3>TASKS {{task.title}}</h3>
+id:<a href="{{url_for('task',tasks_id=task.id)}}" >{{task.id}} </a>
+<br><br>
+project_id: <a href="{{url_for('project',project_id = task.project_id)}}"> {{task.project_id}} </a>
+<br><br>
+title:{{task.title}}
+<br><br>
+description: {{task.description}}
+<br><br>
+priority : {{task.priority}}
+<br><br>
+status: {{task.status}}
+<br>    ---------------------------------------
+</div>
+
+
+{% endfor %}
+
+{% endblock content %}

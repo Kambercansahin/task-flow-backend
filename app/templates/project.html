@@ -1,0 +1,20 @@
+{% extends  'base.html' %}
+
+{% block content %}
+
+<h1>Projects of {{project_unique.name}}</h1>
+
+id: {{project_unique.id}}
+<br><br>
+owner_id:{{project_unique.owner_id}}
+<br><br>
+name:{{project_unique.name}}
+<br><br>
+description: {{project_unique.description}}
+<br><br>
+created_at : {{project_unique.created_at}}
+<br><br>
+updated_at: {{project_unique.updated_at}}
+
+
+{% endblock content %}

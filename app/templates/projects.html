@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>PROJECTS</h1>
+
+{% for project in projects %}
+<h1>Projects of {{project.name}}</h1>
+
+id: <a href="{{ url_for('project',project_id = project.id)}}">{{project.id}}</a>
+<br><br>
+owner_id: <a href="{{url_for('users',user_id=project.owner_id)}}">{{project.owner_id}}</a>
+<br><br>
+name:{{project.name}}
+<br><br>
+description: {{project.description}}
+<br><br>
+created_at : {{project.created_at}}
+<br><br>
+updated_at: {{project.updated_at}}
+
+
+{% endfor %}
+
+
+{% endblock content %}
