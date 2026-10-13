@@ -4,11 +4,19 @@
 <h1>USERS</h1>
 {% for user in users %}
 
-<h3>User{{user.id}}</h3>
-ID: {{user.id}}
+<br>
+
 NAME:<a href = "{{url_for('users',user_id =user.id)}}">{{user.name}} </a>
 E-mail: {{user.email}}
-
+Projects:
+{% if user.projects %}
+    {% for project in user.projects %}
+        <a href="{{ url_for('project', project_id=project.id) }}">{{ project.name }}</a>
+    {% endfor %}
+{% else %}
+    There is no project yet
+{% endif %}
+<br><br>
 
 {% endfor %}
 

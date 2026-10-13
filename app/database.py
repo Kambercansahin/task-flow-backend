@@ -1,15 +1,15 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase,sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine,async_sessionmaker,AsyncSession
+from sqlalchemy.orm import DeclarativeBase
 
-SQL_DATABASE_URL = "sqlite:///./task_flow.db"
+SQL_DATABASE_URL = "sqlite+aiosqlite:///./task_flow.db"
 
-engine = create_engine(url=SQL_DATABASE_URL,connect_args={"check_same_thread":False})
+engine = create_async_engine(url=SQL_DATABASE_URL,connect_args={"check_same_thread":False})
 
-local_session = sessionmaker(bind=engine,autocommit =False,autoflush=False)
+local_session = async_sessionmaker(bind=engine,class_=AsyncSession,expire_on_commit=False)
 
 class Base(DeclarativeBase):
     pass
 
-def get_db():
-    with local_session() as db:
+async def get_db():
+    async with local_session() as db:
         yield db

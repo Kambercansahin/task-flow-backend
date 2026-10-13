@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h3>TASKS {{task.title}}</h3>
-id:{{task.id}}
-<br><br>
-project_id: {{task.project_id}}
-<br><br>
-title:{{task.title}}
-<br><br>
-description: {{task.description}}
-<br><br>
-priority : {{task.priority}}
-<br><br>
-status: {{task.status}}
-<br>    ---------------------------------------
-</div>
+{% if project %}
+<h1>{{ project.name }}</h1>
+<p>{{ project.description or "Açıklama yok" }}</p>
+<hr>
+{% endif %}
 
+<h2>TASKS</h2>
+{% for task in tasks %}
+<div>
+    <h3>TASK {{ task.title }}</h3>
+    id: {{ task.id }}<br>
+    project_id: {{ task.project_id }}<br>
+    description: {{ task.description }}<br>
+    priority: {{ task.priority }}<br>
+    status: {{ task.status }}<br>---------------------------------------
+</div>
+{% else %}
+<p>Task bulunamadı.</p>
+{% endfor %}
 {% endblock content %}

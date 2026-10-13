@@ -4,9 +4,19 @@
 
 
 <h1>{{users.name}}</h1>
-ID: {{users.id}}
+
 NAME: {{users.name}}
+<br>
 E-mail: {{users.email}}
+<br>
+PROJECTS:
+{% if users.projects %}
+    {% for project in users.projects %}
+        <a href="{{url_for('project',project_id=project.id)}}">{{project.name}}</a>
+    {% endfor %}
+{% else %}
+    There is no project yet
+{% endif %}
 
 
 {% endblock  content %}
